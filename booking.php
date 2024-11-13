@@ -276,9 +276,11 @@ $bookings_result = $stmt->get_result();
                                 ?>
                             </td> <!-- Displaying Booking Time in 12-hour format -->
                             <td><?php echo htmlspecialchars($row['status']); ?></td>
-                            <td class="nail-aesthetician <?php echo ($row['status'] === 'Accepted') ? 'active' : ''; ?>">
-                                <?php echo htmlspecialchars($row['worker']); ?>
-                            </td>
+                            <td>
+                            <?php if ($row['status'] === 'Confirmed' || $row['status'] === 'Done'): ?>
+                                <?php echo htmlspecialchars($row['worker_name']); ?>
+                            <?php endif; ?>
+                        </td>
                         </tr>
                     <?php endwhile; ?>
                 </table>
